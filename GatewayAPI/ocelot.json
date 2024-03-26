@@ -1,0 +1,57 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/User/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7259
+        }
+      ],
+      "UpstreamPathTemplate": "/User/{method}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "SwaggerKey": "user"
+    },
+    {
+      "DownstreamPathTemplate": "/Message/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7195
+        }
+      ],
+      "UpstreamPathTemplate": "/Message/{method}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "message"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5050"
+  },
+  "SwaggerEndPoints": [
+    {
+      "Key": "user",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "UserAPI",
+          "Version": "v1",
+          "Url": "https://localhost:7259/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "message",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "MessageAPI",
+          "Version": "v1",
+          "Url": "https://localhost:7195/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}
